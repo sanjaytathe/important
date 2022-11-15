@@ -906,6 +906,29 @@ v=decor2(decor1)
 print(v(x,y))
 '''
 
+'''
+def decor1(num):
+    def inner(x,y):
+        d=num(x,y)
+        add=d*10
+        return add
+    return inner
+def decor2(num):
+    def inner(x,y):
+        d=num(x,y)
+        add=d+3.5
+        return add
+    return inner
+# @decor2            last execution
+# @decor1            first execution
+def decor(x,y):
+    c=x+y
+    return c
+# print(decor(3,9))
+v=decor2(decor1(decor))
+print(v(3,9))  # 123.5
+
+'''
 
 
 # def decor2(fun):
@@ -921,6 +944,34 @@ print(v(x,y))
 # amt=int(input("enter your amount :- "))
 # withdraw=int(input("enter withdraw amount :- "))
 # print(decor1())
+
+
+'''
+def decor1(num):
+    def inner():
+        print('-----------------------------')
+        num()
+        print('-----------------------------')
+        
+    return inner
+def decor2(num):
+    def inner():
+        print('*****************************')
+        num()
+        print('*****************************')
+        
+    return inner
+@decor1
+@decor2
+def decor():
+    print('welcome')
+decor()
+'''
+#     --------------
+#     **************
+#       welcome
+#     --------------
+#     **************
 # -----------------------------------------------------------------------------
 
 # defining a decorator
@@ -1859,7 +1910,87 @@ debug(f"dum of {sum}")
 '''
 #----------------------------------------------------------------
 
+# x=(1,8,5,6,3,7)
+# print(sorted(x))  # [1, 3, 5, 6, 7, 8] 
 
+# -------------------------------------------------------------------------
+
+# def gen(n):
+#     x=0
+#     while x<n:
+#         yield x
+#         x +=1
+# v=gen(4)
+# print(next(v))
+# print(next(v))
+# print(next(v))
+# print(next(v))
+# print(next(v)) # generator shows stops iteration
+
+#--------------------------------------------------------------------------------------------
+
+# x=50
+# def func(x):
+#     print(x) # 50
+#     x=2
+#     print(x) # 2
+# func(x)
+# print(x)     # 50
+
+#--------------------------------------------------------------------------
+
+# class Dog:
+#     def walk(self):
+#         return 'walking'
+#     def speak(self):
+#         return 'woof'
+# class Animal(Dog):
+#     def talks(self):
+#         return super().speak()
+# bobo=Animal()
+# print(bobo.talks())  # woof
+
+#--------------------------------------------------------------------------
+# x=[1,2,3,4,5,6]
+# y=list(map(lambda x:x%2==0,x))
+# print(y) #[False, True, False, True, False, True]
+#--------------------------------------------------------------------------
+# x=[1,2,3,4,5,6]
+# y=list(filter(lambda x:x*2,x))
+# print(y) # [1, 2, 3, 4, 5, 6]
+#--------------------------------------------------------------------------
+# tuple1=(1,2,3)
+# tuple1[0]=5
+# print(tuple1)   #'tuple' object does not support item assignment
+
+#--------------------------------------------------------------------------
+# print({'a':1,'b':2,'a':3})  # {'a': 3, 'b': 2}
+#--------------------------------------------------------------------------
+# for i in range(5):
+#     for j in range(i,5-1):        
+#         print("*", end=" ")
+#     for j in range(i+1):
+#         print("$",end=" ")
+#     print()
+
+# # * * * * $ 
+# # * * * $ $ 
+# # * * $ $ $
+# # * $ $ $ $
+# # $ $ $ $ $
+# ---------------------------------------------------------------------------------
+# s1={1,2,3,4,5}
+# s2={2,5,6}
+# print(s1 ^ s2)  # {1, 3, 4, 6}
+# U-Union
+# n- intersection
+# ^-differnce
+# ---------------------------------------------------------------------------------
+# 2) match  only match with start
+
+# import re
+# a=re.match('sa','sanjay')
+# print(a.start(),a.group())
 
 
 
